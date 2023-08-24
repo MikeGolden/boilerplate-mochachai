@@ -26,10 +26,10 @@ suite('Functional Tests', function () {
       chai
         .request(server)
         .keepOpen()
-        .get('/hello?name=xy_z')
+        .get('/hello?name=Guest')
         .end(function (err, res) {
           assert.equal(res.status, 200);
-          assert.equal(res.text, 'hello xy_z');
+          assert.equal(res.text, 'hello Guest');
           done();
         });
     });
@@ -81,6 +81,7 @@ suite('Functional Tests', function () {
 });
 
 const Browser = require('zombie');
+Browser.site = 'https://king-prawn-app-qi8gp.ondigitalocean.app';
 
 suite('Functional Tests with Zombie.js', function () {
   this.timeout(5000);
