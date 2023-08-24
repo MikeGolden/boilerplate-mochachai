@@ -14,6 +14,7 @@ suite('Functional Tests', function () {
       // Don't forget the callback...
       chai
         .request(server) // 'server' is the Express App
+        .keepOpen()
         .get('/hello') // http_method(url). NO NAME in the query !
         .end(function(err, res) {
           // res is the response object
@@ -31,6 +32,7 @@ suite('Functional Tests', function () {
       // Don't forget the callback...
       chai
         .request(server) // 'server' is the Express App
+        .keepOpen()
         .get('/hello?name=John') /** <=== Put your name in the query **/
         .end(function(err, res) {
           // res is the response object
@@ -48,6 +50,7 @@ suite('Functional Tests', function () {
       // we setup the request for you...
       chai
         .request(server)
+        .keepOpen()
         .put('/travellers')
         /** send {surname: 'Colombo'} here **/
         .send({ surname: 'Colombo' })
@@ -76,6 +79,7 @@ suite('Functional Tests', function () {
       /** place the chai-http request code here... **/
       chai
         .request(server)
+        .keepOpen()
         .put('/travellers')
         .send({ surname: 'da Verrazzano' })
         /** place your tests inside the callback **/
